@@ -6,7 +6,7 @@ use GDO\Form\GDT_Form;
 use GDO\Form\GDT_Submit;
 use GDO\Form\GDT_Validator;
 use GDO\Form\MethodForm;
-use GDO\Recovery\UserRecovery;
+use GDO\Recovery\GDO_UserRecovery;
 use GDO\Type\GDT_Password;
 use GDO\Util\Common;
 use GDO\Util\BCrypt;
@@ -14,13 +14,13 @@ use GDO\Util\BCrypt;
 final class Change extends MethodForm
 {
 	/**
-	 * @var UserRecovery
+	 * @var GDO_UserRecovery
 	 */
 	private $token;
 	
 	public function execute()
 	{
-		if (!($this->token = UserRecovery::getByUIDToken(Common::getRequestString('userid'), Common::getRequestString('token'))))
+		if (!($this->token = GDO_UserRecovery::getByUIDToken(Common::getRequestString('userid'), Common::getRequestString('token'))))
 		{
 			return $this->error('err_token');
 		}

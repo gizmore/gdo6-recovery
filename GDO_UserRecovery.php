@@ -5,9 +5,9 @@ use GDO\DB\GDO;
 use GDO\DB\GDT_CreatedAt;
 use GDO\Type\GDT_Token;
 use GDO\User\GDT_User;
-use GDO\User\User;
+use GDO\User\GDO_User;
 
-class UserRecovery extends GDO
+class GDO_UserRecovery extends GDO
 {
 	public function gdoCached() { return false; }
 	public function gdoColumns()
@@ -39,7 +39,7 @@ class UserRecovery extends GDO
 	
 	/**
 	 * @param string $userid
-	 * @return UserRecovery
+	 * @return self
 	 */
 	public static function getByUserId(string $userid)
 	{
@@ -50,7 +50,7 @@ class UserRecovery extends GDO
 	 * 
 	 * @param string $userid
 	 * @param string $token
-	 * @return UserRecovery
+	 * @return self
 	 */
 	public static function getByUIDToken(string $userid, string $tok)
 	{

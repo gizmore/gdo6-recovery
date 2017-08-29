@@ -8,12 +8,12 @@ use GDO\Form\GDT_Submit;
 use GDO\Form\MethodForm;
 use GDO\Mail\Mail;
 use GDO\Recovery\Module_Recovery;
-use GDO\Recovery\UserRecovery;
+use GDO\Recovery\GDO_UserRecovery;
 use GDO\Template\Error;
 use GDO\Template\Message;
 use GDO\UI\GDT_Link;
 use GDO\User\GDT_Username;
-use GDO\User\User;
+use GDO\User\GDO_User;
 /**
  * Request Password Forgotten Token.
  * Disabled when DEBUG_MAIL is on :)
@@ -46,9 +46,9 @@ final class Form extends MethodForm
 		return Message::message('msg_recovery_mail_sent');
 	}
 
-	private function sendMail(User $user)
+	private function sendMail(GDO_User $user)
 	{
-		$token = UserRecovery::blank(['pw_user_id' => $user->getID()])->replace();
+		$token = GDO_UserRecovery::blank(['pw_user_id' => $user->getID()])->replace();
 		$link = GDT_Link::anchor(url('Recovery', 'Change', "&userid={$user->getID()}&token=".$token->getToken()));
 
 		$mail = Mail::botMail();

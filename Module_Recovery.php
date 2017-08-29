@@ -1,7 +1,7 @@
 <?php
 namespace GDO\Recovery;
 
-use GDO\Core\Module;
+use GDO\Core\GDO_Module;
 use GDO\Date\GDT_Duration;
 use GDO\Form\GDT_Form;
 use GDO\Type\GDT_Checkbox;
@@ -13,13 +13,13 @@ use GDO\UI\GDT_Button;
  * @version 5.0
  * @since 1.0
  */
-class Module_Recovery extends Module
+class Module_Recovery extends GDO_Module
 {
 	##############
 	### Module ###
 	##############
 	public function isCoreModule() { return true; }
-	public function getClasses() { return array('GDO\Recovery\UserRecovery'); }
+	public function getClasses() { return array('GDO\Recovery\GDO_UserRecovery'); }
 	public function onLoadLanguage() { $this->loadLanguage('lang/recovery'); }
 
 	##############
