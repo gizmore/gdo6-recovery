@@ -2,10 +2,10 @@
 namespace GDO\Recovery;
 
 use GDO\Core\Module;
-use GDO\Date\GDO_Duration;
-use GDO\Form\GDO_Form;
-use GDO\Type\GDO_Checkbox;
-use GDO\UI\GDO_Button;
+use GDO\Date\GDT_Duration;
+use GDO\Form\GDT_Form;
+use GDO\Type\GDT_Checkbox;
+use GDO\UI\GDT_Button;
 /**
  * Password recovery module.
  *
@@ -28,8 +28,8 @@ class Module_Recovery extends Module
 	public function getConfig()
 	{
 		return array(
-			GDO_Checkbox::make('recovery_captcha')->initial('1'),
-			GDO_Duration::make('recovery_timeout')->initial(3600),
+			GDT_Checkbox::make('recovery_captcha')->initial('1'),
+			GDT_Duration::make('recovery_timeout')->initial(3600),
 		);
 	}
 	public function cfgCaptcha() { return $this->getConfigValue('recovery_captcha'); }
@@ -40,24 +40,24 @@ class Module_Recovery extends Module
 	#############
 	/**
 	 * Hook login form with link to recovery.
-	 * @param GDO_Form $form
+	 * @param GDT_Form $form
 	 */
-	public function hookLoginForm(GDO_Form $form)
+	public function hookLoginForm(GDT_Form $form)
 	{
 	    $this->hookRegisterForm($form);
 	}
 	
-// 	public function hookGuestForm(GDO_Form $form)
+// 	public function hookGuestForm(GDT_Form $form)
 // 	{
 // // 	    $this->hookRegisterForm($form);
 // 	}
 	
 	/**
 	 * Hook register form with link to recovery.
-	 * @param GDO_Form $form
+	 * @param GDT_Form $form
 	 */
-	public function hookRegisterForm(GDO_Form $form)
+	public function hookRegisterForm(GDT_Form $form)
 	{
-	    $form->addField(GDO_Button::make('btn_recovery')->href(href('Recovery', 'Form')));
+	    $form->addField(GDT_Button::make('btn_recovery')->href(href('Recovery', 'Form')));
 	}
 }

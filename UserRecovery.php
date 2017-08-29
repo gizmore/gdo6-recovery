@@ -2,9 +2,9 @@
 namespace GDO\Recovery;
 
 use GDO\DB\GDO;
-use GDO\DB\GDO_CreatedAt;
-use GDO\Type\GDO_Token;
-use GDO\User\GDO_User;
+use GDO\DB\GDT_CreatedAt;
+use GDO\Type\GDT_Token;
+use GDO\User\GDT_User;
 use GDO\User\User;
 
 class UserRecovery extends GDO
@@ -13,9 +13,9 @@ class UserRecovery extends GDO
 	public function gdoColumns()
 	{
 		return array(
-			GDO_User::make('pw_user_id')->primary(),
-			GDO_Token::make('pw_token')->notNull(),
-			GDO_CreatedAt::make('pw_created_at'),
+			GDT_User::make('pw_user_id')->primary(),
+			GDT_Token::make('pw_token')->notNull(),
+			GDT_CreatedAt::make('pw_created_at'),
 		);
 	}
 	
