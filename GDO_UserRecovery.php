@@ -30,7 +30,7 @@ class GDO_UserRecovery extends GDO
 	}
 
 	/**
-	 * @return User
+	 * @return GDO_User
 	 */
 	public function getUser()
 	{
