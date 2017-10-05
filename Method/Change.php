@@ -10,6 +10,7 @@ use GDO\Recovery\GDO_UserRecovery;
 use GDO\Type\GDT_Password;
 use GDO\Util\Common;
 use GDO\Util\BCrypt;
+use GDO\UI\GDT_Label;
 
 final class Change extends MethodForm
 {
@@ -17,6 +18,8 @@ final class Change extends MethodForm
 	 * @var GDO_UserRecovery
 	 */
 	private $token;
+	
+	public function isUserRequired() { return false; }
 	
 	public function execute()
 	{
@@ -32,12 +35,12 @@ final class Change extends MethodForm
 		$this->title(t('ft_recovery_change', [sitename()]));
 		$form->addField(GDT_Password::make('new_password')->tooltip('tt_password_according_to_security_level'));
 		$form->addField(GDT_Password::make('password_retype')->tooltip('tt_password_retype'));
-		$form->addField(GDT_Validator::make()->validator([$this, 'validatePasswordEqual']));
+		$form->addField(GDT_Validator::make()->validator('password_retype', [$this, 'validatePasswordEqual']));
 		$form->addField(GDT_Submit::make());
 		$form->addField(GDT_AntiCSRF::make());
 	}
 
-	public function validatePasswordEqual(GDT_Form $form, GDT_Validator $gdoType)
+	public function validatePasswordEqual(GDT_Form $form, GDT_Password $gdoType)
 	{
 		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $this->error('err_password_retype');
 	}
