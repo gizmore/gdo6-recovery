@@ -14,6 +14,7 @@ use GDO\Template\Message;
 use GDO\UI\GDT_Link;
 use GDO\User\GDT_Username;
 use GDO\User\GDO_User;
+use GDO\Net\GDT_IP;
 /**
  * Request Password Forgotten Token.
  * Disabled when DEBUG_MAIL is on :)
@@ -22,7 +23,7 @@ use GDO\User\GDO_User;
 final class Form extends MethodForm
 {
     public function isUserRequired() { return false; }
-	public function isEnabled() { return (!GWF_DEBUG_EMAIL); }
+	public function isEnabled() { return (!GWF_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
 	
 	public function createForm(GDT_Form $form)
 	{
