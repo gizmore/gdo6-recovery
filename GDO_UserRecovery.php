@@ -3,7 +3,7 @@ namespace GDO\Recovery;
 
 use GDO\Core\GDO;
 use GDO\DB\GDT_CreatedAt;
-use GDO\Type\GDT_Token;
+use GDO\DB\GDT_Token;
 use GDO\User\GDT_User;
 use GDO\User\GDO_User;
 
@@ -24,7 +24,7 @@ class GDO_UserRecovery extends GDO
 		return $this->getVar('pw_token');
 	}
 	
-	public function validateToken(string $token)
+	public function validateToken($token)
 	{
 		return $this->getToken() === $token;
 	}
@@ -41,7 +41,7 @@ class GDO_UserRecovery extends GDO
 	 * @param string $userid
 	 * @return self
 	 */
-	public static function getByUserId(string $userid)
+	public static function getByUserId($userid)
 	{
 		return self::getBy('pw_user_id', $userid);
 	}
@@ -52,7 +52,7 @@ class GDO_UserRecovery extends GDO
 	 * @param string $token
 	 * @return self
 	 */
-	public static function getByUIDToken(string $userid, string $tok)
+	public static function getByUIDToken($userid, $tok)
 	{
 		if ($token = self::getByUserId($userid))
 		{

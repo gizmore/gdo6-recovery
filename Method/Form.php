@@ -9,8 +9,6 @@ use GDO\Form\MethodForm;
 use GDO\Mail\Mail;
 use GDO\Recovery\Module_Recovery;
 use GDO\Recovery\GDO_UserRecovery;
-use GDO\Template\Error;
-use GDO\Template\Message;
 use GDO\UI\GDT_Link;
 use GDO\User\GDT_Username;
 use GDO\User\GDO_User;
@@ -41,10 +39,10 @@ final class Form extends MethodForm
 		$user = $form->getField('login')->gdo;
 		if (!$user->hasMail())
 		{
-			return Error::error('err_recovery_needs_a_mail', [$user->displayName()]);
+			return $this->error('err_recovery_needs_a_mail', [$user->displayName()]);
 		}
 		$this->sendMail($user);
-		return Message::message('msg_recovery_mail_sent');
+		return $this->message('msg_recovery_mail_sent');
 	}
 
 	private function sendMail(GDO_User $user)

@@ -4,7 +4,7 @@ namespace GDO\Recovery;
 use GDO\Core\GDO_Module;
 use GDO\Date\GDT_Duration;
 use GDO\Form\GDT_Form;
-use GDO\Type\GDT_Checkbox;
+use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Button;
 /**
  * Password recovery module.

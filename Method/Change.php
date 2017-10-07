@@ -7,10 +7,9 @@ use GDO\Form\GDT_Submit;
 use GDO\Form\GDT_Validator;
 use GDO\Form\MethodForm;
 use GDO\Recovery\GDO_UserRecovery;
-use GDO\Type\GDT_Password;
+use GDO\User\GDT_Password;
 use GDO\Util\Common;
 use GDO\Util\BCrypt;
-use GDO\UI\GDT_Label;
 
 final class Change extends MethodForm
 {
