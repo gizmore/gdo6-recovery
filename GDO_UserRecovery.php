@@ -1,7 +1,7 @@
 <?php
 namespace GDO\Recovery;
 
-use GDO\DB\GDO;
+use GDO\Core\GDO;
 use GDO\DB\GDT_CreatedAt;
 use GDO\Type\GDT_Token;
 use GDO\User\GDT_User;
