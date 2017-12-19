@@ -6,6 +6,7 @@ use GDO\Date\GDT_Duration;
 use GDO\Form\GDT_Form;
 use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Button;
+use GDO\UI\GDT_Link;
 /**
  * Password recovery module.
  *
@@ -58,6 +59,6 @@ class Module_Recovery extends GDO_Module
 	 */
 	public function hookRegisterForm(GDT_Form $form)
 	{
-	    $form->addField(GDT_Button::make('btn_recovery')->href(href('Recovery', 'Form')));
+	    $form->addField(GDT_Link::make('btn_recovery')->href(href('Recovery', 'Form')));
 	}
 }
