@@ -13,6 +13,8 @@ use GDO\UI\GDT_Link;
 use GDO\User\GDT_Username;
 use GDO\User\GDO_User;
 use GDO\Net\GDT_IP;
+use GDO\UI\GDT_Divider;
+use GDO\Mail\GDT_Email;
 /**
  * Request Password Forgotten Token.
  * Disabled when DEBUG_MAIL is on :)
@@ -25,7 +27,12 @@ final class Form extends MethodForm
 	
 	public function createForm(GDT_Form $form)
 	{
-		$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login')->exists());
+		$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login'));
+		if (Module_Recovery::instance()->cfgEmail())
+		{
+// 			$form->addField(GDT_Divider::make()->label('div_optionally'));
+			$form->addField(GDT_Email::make('email')->tooltip('tt_recovery_email'));
+		}
 		if (Module_Recovery::instance()->cfgCaptcha())
 		{
 			$form->addField(GDT_Captcha::make());
@@ -36,7 +43,13 @@ final class Form extends MethodForm
 	
 	public function formValidated(GDT_Form $form)
 	{
-		$user = $form->getField('login')->gdo;
+		if (!($user = GDO_User::getByName($form->getFormVar('login'))))
+		{
+			if (!($user = GDO_User::table()->getBy('user_email', $form->getFormVar('email'))))
+			{
+				return $this->error('err_email_or_login')->add($this->renderPage());
+			}
+		}
 		if (!$user->hasMail())
 		{
 			return $this->error('err_recovery_needs_a_mail', [$user->displayName()]);

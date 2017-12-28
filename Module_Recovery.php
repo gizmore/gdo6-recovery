@@ -29,10 +29,12 @@ class Module_Recovery extends GDO_Module
 	public function getConfig()
 	{
 		return array(
+			GDT_Checkbox::make('recovery_email')->initial('1'),
 			GDT_Checkbox::make('recovery_captcha')->initial('1'),
 			GDT_Duration::make('recovery_timeout')->initial(3600),
 		);
 	}
+	public function cfgEmail() { return $this->getConfigValue('recovery_email'); }
 	public function cfgCaptcha() { return $this->getConfigValue('recovery_captcha'); }
 	public function cfgTimeout() { return $this->getConfigValue('recovery_timeout'); }
 	
