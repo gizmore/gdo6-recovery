@@ -13,7 +13,6 @@ use GDO\UI\GDT_Link;
 use GDO\User\GDT_Username;
 use GDO\User\GDO_User;
 use GDO\Net\GDT_IP;
-use GDO\UI\GDT_Divider;
 use GDO\Mail\GDT_Email;
 /**
  * Request Password Forgotten Token.
@@ -27,10 +26,12 @@ final class Form extends MethodForm
 	
 	public function createForm(GDT_Form $form)
 	{
-		$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login'));
+		if (Module_Recovery::instance()->cfgLogin())
+		{
+			$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login'));
+		}
 		if (Module_Recovery::instance()->cfgEmail())
 		{
-// 			$form->addField(GDT_Divider::make()->label('div_optionally'));
 			$form->addField(GDT_Email::make('email')->tooltip('tt_recovery_email'));
 		}
 		if (Module_Recovery::instance()->cfgCaptcha())
