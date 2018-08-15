@@ -21,7 +21,7 @@ use GDO\Mail\GDT_Email;
  */
 final class Form extends MethodForm
 {
-    public function isUserRequired() { return false; }
+	public function isUserRequired() { return false; }
 	public function isEnabled() { return (!GWF_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
 	
 	public function createForm(GDT_Form $form)

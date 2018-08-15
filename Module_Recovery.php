@@ -48,12 +48,12 @@ class Module_Recovery extends GDO_Module
 	 */
 	public function hookLoginForm(GDT_Form $form)
 	{
-	    $this->hookRegisterForm($form);
+		$this->hookRegisterForm($form);
 	}
 	
 // 	public function hookGuestForm(GDT_Form $form)
 // 	{
-// // 	    $this->hookRegisterForm($form);
+// // 		$this->hookRegisterForm($form);
 // 	}
 	
 	/**
@@ -62,6 +62,6 @@ class Module_Recovery extends GDO_Module
 	 */
 	public function hookRegisterForm(GDT_Form $form)
 	{
-	    $form->addField(GDT_Button::make('btn_recovery')->secondary()->href(href('Recovery', 'Form')));
+		$form->addField(GDT_Button::make('btn_recovery')->secondary()->href(href('Recovery', 'Form')));
 	}
 }
