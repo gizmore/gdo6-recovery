@@ -6,7 +6,8 @@ return array(
 # Forgot?
 'ft_recovery_form' => '[%s] Password Recovery',
 'msg_recovery_mail_sent' => 'We have sent you an E-Mail with instructions.',
-
+'err_email_or_login' => 'Please provide information on which account you would like to recover.',
+	
 # Change
 'ft_recovery_change' => '[%s] Password Reset',
 'new_password' => 'New Password',

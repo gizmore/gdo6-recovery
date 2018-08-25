@@ -10,6 +10,7 @@ use GDO\Recovery\GDO_UserRecovery;
 use GDO\User\GDT_Password;
 use GDO\Util\Common;
 use GDO\Util\BCrypt;
+use GDO\UI\GDT_Paragraph;
 
 final class Change extends MethodForm
 {
@@ -32,8 +33,9 @@ final class Change extends MethodForm
 	public function createForm(GDT_Form $form)
 	{
 		$this->title(t('ft_recovery_change', [sitename()]));
-		$form->addField(GDT_Password::make('new_password')->tooltip('tt_password_according_to_security_level'));
-		$form->addField(GDT_Password::make('password_retype')->tooltip('tt_password_retype'));
+		$form->addField(GDT_Paragraph::withHTML(t('p_recovery_change')));
+		$form->addField(GDT_Password::make('new_password')->label('new_password')->tooltip('tt_password_according_to_security_level'));
+		$form->addField(GDT_Password::make('password_retype')->label('password_retype')->tooltip('tt_password_retype'));
 		$form->addField(GDT_Validator::make()->validator('password_retype', [$this, 'validatePasswordEqual']));
 		$form->addField(GDT_Submit::make());
 		$form->addField(GDT_AntiCSRF::make());
@@ -41,7 +43,7 @@ final class Change extends MethodForm
 
 	public function validatePasswordEqual(GDT_Form $form, GDT_Password $gdoType)
 	{
-		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $this->error('err_password_retype');
+		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $gdoType->error('err_password_retype');
 	}
 	
 	public function formValidated(GDT_Form $form)
