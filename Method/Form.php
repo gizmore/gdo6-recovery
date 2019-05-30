@@ -14,6 +14,7 @@ use GDO\User\GDT_Username;
 use GDO\User\GDO_User;
 use GDO\Net\GDT_IP;
 use GDO\Mail\GDT_Email;
+use GDO\Core\GDT_Hook;
 /**
  * Request Password Forgotten Token.
  * Disabled when DEBUG_MAIL is on :)
@@ -38,8 +39,10 @@ final class Form extends MethodForm
 		{
 			$form->addField(GDT_Captcha::make());
 		}
-		$form->addField(GDT_AntiCSRF::make());
 		$form->addField(GDT_Submit::make());
+		$form->addField(GDT_AntiCSRF::make());
+
+		GDT_Hook::callHook('RecoveryForm', $form);
 	}
 	
 	public function formValidated(GDT_Form $form)
