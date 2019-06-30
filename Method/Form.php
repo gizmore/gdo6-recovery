@@ -73,4 +73,10 @@ final class Form extends MethodForm
 		$mail->setBody(t('mail_subj_body', $body));
 		$mail->sendToUser($user);
 	}
+	
+	public function renderPage()
+	{
+		return $this->templatePHP('form.php', ['form'=>$this->getForm()]);
+	}
+
 }

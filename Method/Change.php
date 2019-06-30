@@ -53,4 +53,9 @@ final class Change extends MethodForm
 		$this->token->delete();
 		return $this->message('msg_pass_changed');
 	}
+
+	public function renderPage()
+	{
+		return $this->templatePHP('change.php', ['form'=>$this->getForm()]);
+	}
 }
