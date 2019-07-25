@@ -15,6 +15,7 @@ use GDO\User\GDO_User;
 use GDO\Net\GDT_IP;
 use GDO\Mail\GDT_Email;
 use GDO\Core\GDT_Hook;
+use GDO\Core\GDT_Template;
 /**
  * Request Password Forgotten Token.
  * Disabled when DEBUG_MAIL is on :)
@@ -69,8 +70,12 @@ final class Form extends MethodForm
 
 		$mail = Mail::botMail();
 		$mail->setSubject(t('mail_subj_recovery', [sitename()]));
-		$body = [$user->displayName(), sitename(), $link];
-		$mail->setBody(t('mail_subj_body', $body));
+		$tVars = array(
+			'username' => $user->displayName(),
+			'link' => $link,
+		);
+		$body = GDT_Template::php('Recovery', 'mail/recovery_mail.php', $tVars);
+		$mail->setBody($body);
 		$mail->sendToUser($user);
 	}
 	

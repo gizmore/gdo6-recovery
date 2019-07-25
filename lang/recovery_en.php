@@ -16,16 +16,4 @@ return array(
 'msg_pass_changed' => 'Your password has been changed successfully.',
 ############################################################
 'mail_subj_recovery' => '[%s] Password Recovery',
-'mail_subj_body' => '
-Dear %s,
-
-You want to change your password on %s?
-
-Simply follow this link, or ignore this mail.
-
-%s
-
-Kind Regards,
-The %2$s Team
-',
 );
