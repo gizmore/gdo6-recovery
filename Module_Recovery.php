@@ -18,7 +18,7 @@ class Module_Recovery extends GDO_Module
 	##############
 	### Module ###
 	##############
-	public function isCoreModule() { return true; }
+	public function getDependencies() { return ['Captcha']; }
 	public function getClasses() { return array('GDO\Recovery\GDO_UserRecovery'); }
 	public function onLoadLanguage() { $this->loadLanguage('lang/recovery'); }
 
