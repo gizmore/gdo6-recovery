@@ -16,4 +16,6 @@ return array(
 'msg_pass_changed' => 'Your password has been changed successfully.',
 ############################################################
 'mail_subj_recovery' => '[%s] Password Recovery',
+############################################################
+'mdescr_recovery_form' => 'Reset Password',	
 );

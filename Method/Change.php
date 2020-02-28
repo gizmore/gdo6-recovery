@@ -11,6 +11,7 @@ use GDO\User\GDT_Password;
 use GDO\Util\Common;
 use GDO\Util\BCrypt;
 use GDO\UI\GDT_Paragraph;
+use GDO\DB\GDT_String;
 
 final class Change extends MethodForm
 {
@@ -20,6 +21,14 @@ final class Change extends MethodForm
 	private $token;
 	
 	public function isUserRequired() { return false; }
+	
+	public function gdoParameters()
+	{
+		return array(
+			GDT_String::make('userid')->notNull(),
+			GDT_String::make('token')->notNull(),
+		);
+	}
 	
 	public function execute()
 	{
