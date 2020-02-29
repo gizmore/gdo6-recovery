@@ -17,5 +17,5 @@ return array(
 ############################################################
 'mail_subj_recovery' => '[%s] Passwort ändern',
 
-'mdescr_recovery_form' => 'Passwort zurücksetzen'
+'mdescr_recovery_form' => 'Passwort zurücksetzen',
 );
