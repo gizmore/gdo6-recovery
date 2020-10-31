@@ -31,7 +31,7 @@ class Module_Recovery extends GDO_Module
 			GDT_Checkbox::make('recovery_login')->initial('1'),
 			GDT_Checkbox::make('recovery_email')->initial('1'),
 			GDT_Checkbox::make('recovery_captcha')->initial('1'),
-			GDT_Duration::make('recovery_timeout')->initial(3600),
+			GDT_Duration::make('recovery_timeout')->initial('1h'),
 		);
 	}
 	public function cfgLogin() { return $this->getConfigValue('recovery_login'); }
