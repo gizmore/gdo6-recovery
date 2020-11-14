@@ -42,7 +42,7 @@ final class Change extends MethodForm
 	public function createForm(GDT_Form $form)
 	{
 		$this->title(t('ft_recovery_change', [sitename()]));
-		$form->addField(GDT_Paragraph::withHTML(t('p_recovery_change')));
+		$form->addField(GDT_Paragraph::make()->text('p_recovery_change'));
 		$form->addField(GDT_Password::make('new_password')->label('new_password')->tooltip('tt_password_according_to_security_level'));
 		$form->addField(GDT_Password::make('password_retype')->label('password_retype')->tooltip('tt_password_retype'));
 		$form->addField(GDT_Validator::make()->validator('password_retype', [$this, 'validatePasswordEqual']));
