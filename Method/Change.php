@@ -46,7 +46,7 @@ final class Change extends MethodForm
 		$form->addField(GDT_Password::make('new_password')->label('new_password')->tooltip('tt_password_according_to_security_level'));
 		$form->addField(GDT_Password::make('password_retype')->label('password_retype')->tooltip('tt_password_retype'));
 		$form->addField(GDT_Validator::make()->validator('password_retype', [$this, 'validatePasswordEqual']));
-		$form->addField(GDT_Submit::make());
+		$form->actions()->addField(GDT_Submit::make());
 		$form->addField(GDT_AntiCSRF::make());
 	}
 

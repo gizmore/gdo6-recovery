@@ -62,8 +62,6 @@ class Module_Recovery extends GDO_Module
 	 */
 	public function hookRegisterForm(GDT_Form $form)
 	{
-	    /** @var $cont \GDO\UI\GDT_Container **/
-	    $cont = $form->getField('btncont');
-	    $cont->addField(GDT_Button::make('btn_recovery')->secondary()->href(href('Recovery', 'Form')));
+	    $form->actions()->addField(GDT_Button::make('btn_recovery')->secondary()->href(href('Recovery', 'Form')));
 	}
 }
