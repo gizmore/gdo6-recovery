@@ -5,7 +5,7 @@ return array(
 
 # Forgot?
 'ft_recovery_form' => 'Passwort zurücksetzen',
-'msg_recovery_mail_sent' => 'Wir haben Ihnen eine E-Mail gesendet die weiter Anweisungen enthält.',
+'msg_recovery_mail_sent' => 'Wir haben Ihnen eine E-Mail gesendet die weitere Anweisungen enthält.',
 'err_email_or_login' => 'Bitte geben Sie an welches Konto Sie zurücksetzen wollen.',
 	
 # Change
