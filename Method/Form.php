@@ -24,7 +24,7 @@ use GDO\Core\GDT_Template;
 final class Form extends MethodForm
 {
 	public function isUserRequired() { return false; }
-	public function isEnabled() { return (!GWF_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
+	public function isEnabled() { return (!GDO_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
 	
 	public function createForm(GDT_Form $form)
 	{
@@ -63,7 +63,7 @@ final class Form extends MethodForm
 		return $this->message('msg_recovery_mail_sent');
 	}
 
-	private function sendMail(GDO_User $user)
+	public function sendMail(GDO_User $user)
 	{
 		$token = GDO_UserRecovery::blank(['pw_user_id' => $user->getID()])->replace();
 		$link = GDT_Link::anchor(url('Recovery', 'Change', "&userid={$user->getID()}&token=".$token->getToken()));

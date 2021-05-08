@@ -11,6 +11,7 @@ return array(
 # Change
 'ft_recovery_change' => 'Passwort ändern',
 'new_password' => 'Neues Passwort',
+'p_recovery_change' => 'Sie dürfen nun ein neues Passwort für Ihr Konto vergeben.',
 'password_retype' => 'Erneut eingeben',
 'err_password_retype' => 'Sie müssen das Passwort zwei mal eingeben.',
 'msg_pass_changed' => 'Ihr Passwort wurde erfolgreich geändert.',

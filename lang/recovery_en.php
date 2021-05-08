@@ -11,6 +11,7 @@ return array(
 # Change
 'ft_recovery_change' => 'Password Reset',
 'new_password' => 'New Password',
+'p_recovery_change' => 'You may now choose a new password for your account.',
 'password_retype' => 'Retype it',
 'err_password_retype' => 'You did not retype your new password correctly.',
 'msg_pass_changed' => 'Your password has been changed successfully.',
