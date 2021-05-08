@@ -52,7 +52,7 @@ final class Form extends MethodForm
 		{
 			if (!($user = GDO_User::table()->getBy('user_email', $form->getFormVar('email'))))
 			{
-				return $this->error('err_email_or_login')->add($this->renderPage());
+				return $this->error('err_email_or_login')->addField($this->renderPage());
 			}
 		}
 		if (!$user->hasMail())
