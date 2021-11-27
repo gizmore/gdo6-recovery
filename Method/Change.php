@@ -50,9 +50,9 @@ final class Change extends MethodForm
 		$form->addField(GDT_AntiCSRF::make());
 	}
 
-	public function validatePasswordEqual(GDT_Form $form, GDT_Password $gdoType)
+	public function validatePasswordEqual(GDT_Form $form, GDT_Password $gdt)
 	{
-		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $gdoType->error('err_password_retype');
+		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $gdt->error('err_password_retype');
 	}
 	
 	public function formValidated(GDT_Form $form)
